@@ -1,5 +1,5 @@
 <?php
-    require_once("class/autoload.php");
+    require_once("../class/autoload.php");
 
     // Carregar dados enviados pelo formulário da página "index.php"
     $lado = isset($_POST["lado"]) ? $_POST["lado"] : 1;
@@ -8,7 +8,7 @@
     // move_uploaded_file($_FILES["arquivo"]["tmp_name"], $destino);
 
     $destino = "imagens";
-    $id = 0;
+    
     if(isset($_POST["id"])) // Se o "id" for enviado via POST, é uma edição
         $id = $_POST["id"];
     else // Se for exclusão, os dados virão via GET
@@ -18,7 +18,7 @@
     try{
         // Cria objeto "Tabuleiro" com os valores carregados acima
         $tab = new Tabuleiro($id, $lado, $destino);
-        $utlimo = "";
+        $ultimo = "";
         if($id > 0) // Atualizar existente
             $tab->alterar();
         else // Novo registro, porque o "id" não foi enviado
